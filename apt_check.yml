@@ -12,21 +12,22 @@
 
 - name: "Apt Check"
   hosts: all
-  gather_facts: false
+  gather_facts: true
 
   tasks:
     - name: Update all packages to their latest version
       ansible.builtin.apt:
         name: "*"
         state: latest
+      when: ansible_facts['os_family'] == "Debian"
 
     - name: Auto Remove
       ansible.builtin.apt:
         autoremove: true
         purge: true
+      when: ansible_facts['os_family'] == "Debian"
 
     - name: Auto Clean
       ansible.builtin.apt:
         autoclean: true
-
-  when: ansible_facts['os_family'] == "Debian"
+      when: ansible_facts['os_family'] == "Debian"
