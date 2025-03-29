@@ -1,0 +1,14 @@
+---
+- name: "Apt Check"
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: debug
+      debug:
+        msg: "Host : {{ ansible_host }}"
+
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
