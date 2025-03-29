@@ -12,3 +12,4 @@
       ansible.builtin.apt:
         name: "*"
         state: latest
+      when: "{{ ansible_distribution }}" == "Ubuntu" or "{{ ansible_distribution }}"" == "Debian"
