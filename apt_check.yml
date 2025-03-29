@@ -6,10 +6,23 @@
   tasks:
     - name: debug
       debug:
-        msg: "Host : {{ ansible_host }}"
+        msg:
+         - "Host : {{ ansible_hostname }}"
+         - "IP : {{ ansible_host }}"
 
     - name: Update all packages to their latest version
       ansible.builtin.apt:
         name: "*"
         state: latest
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Auto Remove
+      ansible.builtin.apt:
+        autoremove: true
+        purge: true
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Auto Clean
+      ansible.builtin.apt:
+        autoclean: true
       when: ansible_facts['os_family'] == "Debian"
