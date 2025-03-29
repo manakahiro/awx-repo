@@ -1,0 +1,13 @@
+---
+- name: "Apt install" 
+  hosts: all
+  gather_facts: true
+
+  tasks:
+
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present 
+      when: ansible_facts['os_family'] == "Debian"
+      with_items: pacakges
