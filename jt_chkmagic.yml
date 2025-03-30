@@ -1,0 +1,11 @@
+---
+- name: "Show Magics" 
+  hosts: localhost
+  gather_facts: false 
+
+  tasks:
+    - name: Show magic variables
+      ansible.builtin.debug:
+        msg:
+          - "check mode: {{ ansible_check_mode }}"
+          - "forks: {{ ansible_forks }}"
