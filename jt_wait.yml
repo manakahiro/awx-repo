@@ -1,0 +1,9 @@
+---
+- name: "Wait" 
+  hosts: localhost
+  gather_facts: false 
+
+  tasks:
+    - name: wait 
+      ansible.builtin.pause:
+        seconds: 60
