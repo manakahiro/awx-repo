@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   gather_facts: true
   tasks:
     - name: Do misc command in shell
@@ -8,5 +8,4 @@
         which python3
         pwd
         exit 0
-      delegate_to: localhost
       
