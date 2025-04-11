@@ -5,7 +5,9 @@
     - name: Do misc command in shell
       ansible.builtin.shell: |
         ls -la
-        which python3
+        which python
         pwd
+        hostname
+        ip a
         exit 0
       
