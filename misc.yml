@@ -5,7 +5,6 @@
     - name: Do misc command in shell
       ansible.builtin.shell:
         cmd:
-          - which python
           - which python3
           - pwd
           - ping localhost
