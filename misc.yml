@@ -3,12 +3,10 @@
   gather_facts: true
   tasks:
     - name: Do misc command in shell
-      ansible.builtin.shell: |
-        hostname
-        which python
-        which python3
-        ping localhost
-        python -V
-        python3 -V
-        exit 0
+      ansible.builtin.shell:
+        cmd:
+          - which python
+          - which python3
+          - pwd
+          - ping localhost
       
