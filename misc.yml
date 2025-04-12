@@ -7,7 +7,7 @@
         ls -la
         which python
         pwd
-        hostname
-        ip a
+        python -V
+        python3 -V
         exit 0
       
