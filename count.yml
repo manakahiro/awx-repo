@@ -8,6 +8,6 @@
         exit 0
       register: rc
     - name: Show result
-      ansible.bultin.debug:
+      ansible.builtin.debug:
         msg: "{{ rc.stdout }}"
       
