@@ -6,4 +6,8 @@
       ansible.builtin.shell: |
         python ./count.py
         exit 0
+      register: rc
+    - name: Show result
+      ansible.bultin.debug:
+        msg: "{{ rc.stdout }}"
       
