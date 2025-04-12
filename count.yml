@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: true
+  tasks:
+    - name: Do misc command in shell
+      ansible.builtin.shell: |
+        python ./count.py
+        exit 0
+      
