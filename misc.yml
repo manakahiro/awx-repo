@@ -9,5 +9,6 @@
         pwd
         python -V
         python3 -V
+        python -c \"import sys; print(sum([x for x in range(10+1)]))\"
         exit 0
       
