@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  gather_facts: true
+  gather_facts: no
   tasks:
     - name: Do misc command in shell
       ansible.builtin.shell: |
