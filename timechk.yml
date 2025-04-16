@@ -1,11 +1,11 @@
 ---
 - hosts: localhost
-  gather_facts: no 
+  gather_facts: no
+  vars:
+    cur: "{{ lookup('pipe', 'TZ=JST-9 date') }}"
+    cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s') }}"
+
   tasks:
-    - name: CheckTime 
-      set_fact:
-        cur: "{{ lookup('pipe', 'TZ=JST-9 date') }}"
-        cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s') }}"
     - name: shw 
       debug:
         var:
