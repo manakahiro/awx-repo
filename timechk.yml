@@ -6,8 +6,6 @@
     cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s') }}"
 
   tasks:
-    - name: shw 
+    - name: show 
       debug:
-        var:
-          - cur
-          - cur_s
+        message: "cur {{cur}}: cur_s {{cur_s}} "
