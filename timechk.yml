@@ -3,7 +3,10 @@
   gather_facts: no 
   tasks:
     - name: CheckTime 
-      - set_fact: cur="{{ lookup('pipe', 'TZ=JST-9 date' }}"
-      #     - set_fact: cur_s="{{ lookup('pipe', 'TZ=JST-9 date +%s' }}"
-      - debug: var=cur
-      # - debug: var=cur_s
+      - set_fact:
+        cur: "{{ lookup('pipe', 'TZ=JST-9 date' }}"
+        cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s' }}"
+      - debug:
+        var:
+          - cur
+          - cur_s
