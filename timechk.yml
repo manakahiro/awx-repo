@@ -8,4 +8,4 @@
   tasks:
     - name: show 
       debug:
-        message: "cur {{cur}}: cur_s {{cur_s}} "
+        msg: "cur {{cur}}: cur_s {{cur_s}} "
