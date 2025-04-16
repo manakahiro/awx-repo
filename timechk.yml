@@ -4,6 +4,6 @@
   tasks:
     - name: CheckTime 
       - set_fact: cur="{{ lookup('pipe', 'TZ=JST-9 date' }}"
-      - set_fact: cur_s="{{ lookup('pipe', 'TZ=JST-9 date +%s' }}"
+      #     - set_fact: cur_s="{{ lookup('pipe', 'TZ=JST-9 date +%s' }}"
       - debug: var=cur
-      - debug: var=cur_s
+      # - debug: var=cur_s
