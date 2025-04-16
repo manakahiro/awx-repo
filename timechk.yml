@@ -4,8 +4,8 @@
   tasks:
     - name: CheckTime 
       set_fact:
-        cur: "{{ lookup('pipe', 'TZ=JST-9 date' }}"
-        cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s' }}"
+        cur: "{{ lookup('pipe', 'TZ=JST-9 date') }}"
+        cur_s: "{{ lookup('pipe', 'TZ=JST-9 date +%s') }}"
     - name: shw 
       debug:
         var:
