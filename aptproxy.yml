@@ -12,4 +12,3 @@
         mode: "644"
         owner: "root:root"
       when: ansible_facts['os_family'] == "Debian"
-      with_items: "{{ packages }}"
