@@ -8,7 +8,7 @@
       ansible.builtin.blockinfile:
         path: "/etc/apt/apt.conf.d/01proxy"
         block: |
-          Acquire::http::Proxy "http://192.168.0.60:3128/"
+          Acquire::http::Proxy "http://192.168.0.60:3128/";
         mode: "644"
         owner: "root"
         create: true
