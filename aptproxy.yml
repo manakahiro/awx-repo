@@ -6,7 +6,7 @@
   tasks:
     - name: Set Apt Proxy
       ansible.builtin.blockinfile:
-        path: "/etc/apt/apt.d/01proxy"
+        path: "/etc/apt/apt.conf.d/01proxy"
         block: |
           Acquire::http::Proxy "http://192.168.0.60:3128/"
         mode: "644"
