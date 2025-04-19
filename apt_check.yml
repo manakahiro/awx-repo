@@ -17,10 +17,13 @@
   tasks:
     - name: Update all packages to their latest version
       ansible.builtin.apt:
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+      
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
         name: "*"
         state: "latest"
-        update_cache: true
-        upgrade: yes
       when: ansible_facts['os_family'] == "Debian"
 
     - name: Auto Remove
