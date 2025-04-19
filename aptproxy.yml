@@ -1,0 +1,15 @@
+---
+- name: Set Apt Proxy
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Set Apt Proxy
+      ansible.builtin.blockinfile:
+        path: "/etc/apt/apt.d/01proxy"
+        block: |
+          Acquire::http::Proxy "http://192.168.0.60:3128/"
+        mode: "644"
+        owner: "root:root"
+      when: ansible_facts['os_family'] == "Debian"
+      with_items: "{{ packages }}"
