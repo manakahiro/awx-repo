@@ -6,7 +6,7 @@
       ansible.builtin.blockinfile:
         path: "{{ path }}"
         block: |
-         {{ item  }}
+        	{{ item  }}
         create: yes
         mode: "0644"
-	loop: "{{ name_list }}"
+      loop: "{{ name_list }}"
