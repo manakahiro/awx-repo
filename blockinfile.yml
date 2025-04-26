@@ -7,7 +7,7 @@
         path: "{{ path }}"
         block: |
           %{ for i in name_list %}
-          {{ i }}
+          "{{ i }}"
           %{ endfor %}
         create: yes
         mode: "0644"
