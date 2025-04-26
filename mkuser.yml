@@ -4,40 +4,41 @@
   tasks:
     - name: make group
       ansible.builtin.group:
-        name: "{{item}}"
-      loop: "{{users}}"
+        name: "{{ item.name }}"
+      loop: "{{ users }}"
 
     - name: make user 
       ansible.builtin.user:
-        name: "{{item}}"
-        group: "{{item}}"
+        name: "{{ item.name }}"
+        group: "{{ item.name }}"
         groups: 
           - sudo
         shell: "/bin/bash"
-      loop: "{{users}}"
+        password: "{{ item.hash }}"
+      loop: "{{ users }}"
 
     - name: make .ssh/ folder 
       ansible.builtin.file:
-        path: "/home/{{item}}/.ssh"
+        path: "/home/{{ item.name }}/.ssh"
         state: "directory"
         mode: "0700"
-        owner: "{{item}}"
-        group: "{{item}}"
-      loop: "{{users}}"
+        owner: "{{ item.name }}"
+        group: "{{ item.name }}"
+      loop: "{{ users }}"
 
-    - name: make authorized_keys file
-      ansible.builtin.blockinfile:
-        path: "/home/{{item}}/.ssh/authorized_keys"
-        block: |
-          {% for key in auth_keys %}
-          {{ key }}
-          {% endfor %}
-        create: yes
-        mode: "0700"
-        owner: "{{item}}"
-        group: "{{item}}"
-      loop: "{{users}}"
-
+#    - name: make authorized_keys file
+#      ansible.builtin.blockinfile:
+#        path: "/home/{{item}}/.ssh/authorized_keys"
+#        block: |
+#          {% for key in auth_keys %}
+#          {{ key }}
+#          {% endfor %}
+#        create: yes
+#        mode: "0700"
+#        owner: "{{item}}"
+#        group: "{{item}}"
+#      loop: "{{users}}"
+#
 #    - name: echo debug for loop
 #      debug:
 #        msg: "{{ item }}"
