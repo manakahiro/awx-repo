@@ -14,8 +14,8 @@
 
     - name: echo debug for loop
       debug:
-        msg: "{{ itmem }}"
-      loop: "{{ server_list }}"
+        msg: "{{ item }}"
+      loop: "{{ name_list }}"
 
 
 
