@@ -25,10 +25,9 @@
     - name: make authorized_keys file
       ansible.builtin.blockinfile:
         path: "/home/hama/.ssh/authorized_keys"
+        block: |
+         {{ auth_key }}
         create: yes
         mode: "0700"
         owner: hama
         group: hama
-        block: |
-         {{ item }}
-        with_items: auth_keys
