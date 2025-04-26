@@ -12,5 +12,23 @@
         group: hama
         groups: 
           - sudo
-        authorization: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+WL+RsIONh/+TXlfxqTUVahfWWyFAABCTrftCDrhd0 hama@dv6"
+        authorization: ""
 
+    - name: make .ssh/ folder 
+      ansible.builtin.file:
+        path: "/home/hama/.ssh"
+        state: "directory"
+        mode: "0700"
+        owner: hama
+        group: hama
+
+    - name: make authorized_keys file
+      ansible.builtin.blockinfile:
+        path: "/home/hama/.ssh/authorized_keys"
+        create: yes
+        mode: "0700"
+        owner: hama
+        group: hama
+        block:
+         {{ item }}
+        with_items: auth_keys
