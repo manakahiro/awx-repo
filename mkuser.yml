@@ -30,5 +30,5 @@
         owner: hama
         group: hama
         block: |
-         "{{ item }}"
+         {{ item }}
         with_items: auth_keys
