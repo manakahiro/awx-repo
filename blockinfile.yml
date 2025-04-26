@@ -5,8 +5,7 @@
     - name: blockinfile 
       ansible.builtin.blockinfile:
         path: "{{ path }}"
-        block: |
-        {{ item  }}
+        block: {{ item }}
         create: yes
         mode: "0644"
       with_items: "{{ name_list }}"
