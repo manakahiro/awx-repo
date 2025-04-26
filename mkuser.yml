@@ -29,6 +29,6 @@
         mode: "0700"
         owner: hama
         group: hama
-        block:
+        block: |
          {{ item }}
         with_items: auth_keys
