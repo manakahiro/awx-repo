@@ -2,32 +2,46 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - name: make group "{{user}}"
+    - name: make group
       ansible.builtin.group:
-        name: "{{user}}"
+        name: "{{item}}"
+      loop: "{{users}}"
 
-    - name: make user "{{user}}" 
+    - name: make user 
       ansible.builtin.user:
-        name: "{{user}}"
-        group: "{{user}}"
+        name: "{{item}}"
+        group: "{{item}}"
         groups: 
           - sudo
         shell: "/bin/bash"
+      loop: "{{users}}"
 
     - name: make .ssh/ folder 
       ansible.builtin.file:
-        path: "/home/{{user}}/.ssh"
+        path: "/home/{{item}}/.ssh"
         state: "directory"
         mode: "0700"
-        owner: "{{user}}"
-        group: "{{user}}"
+        owner: "{{item}}"
+        group: "{{item}}"
+      loop: "{{users}}"
 
     - name: make authorized_keys file
       ansible.builtin.blockinfile:
-        path: "/home/{{user}}/.ssh/authorized_keys"
+        path: "/home/{{item}}/.ssh/authorized_keys"
         block: |
-         {{ auth_key }}
+          {% for key in auth_keys %}
+          {{ key }}
+          {% endfor %}
         create: yes
         mode: "0700"
-        owner: "{{user}}"
-        group: "{{user}}"
+        owner: "{{item}}"
+        group: "{{item}}"
+      loop: "{{users}}"
+
+#    - name: echo debug for loop
+#      debug:
+#        msg: "{{ item }}"
+#      loop: "{{ name_list }}"
+
+
+
