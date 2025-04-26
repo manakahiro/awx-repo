@@ -9,7 +9,7 @@
     - name: make user "{{user}}" 
       ansible.builtin.user:
         name: "{{user}}"
-        group: "{{user}}
+        group: "{{user}}"
         groups: 
           - sudo
         shell: "/bin/bash"
