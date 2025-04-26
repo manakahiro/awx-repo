@@ -9,4 +9,4 @@
         	{{ item  }}
         create: yes
         mode: "0644"
-      loop: "{{ name_list }}"
+      with_items: "{{ name_list }}"
