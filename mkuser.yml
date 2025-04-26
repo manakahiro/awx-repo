@@ -2,33 +2,32 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - name: make group hama
+    - name: make group "{{user}}"
       ansible.builtin.group:
-        name: hama
+        name: "{{user}}"
 
-    - name: make user hama
+    - name: make user "{{user}}" 
       ansible.builtin.user:
-        name: hama
-        group: hama
+        name: "{{user}}"
+        group: "{{user}}
         groups: 
           - sudo
-        authorization: ""
         shell: "/bin/bash"
 
     - name: make .ssh/ folder 
       ansible.builtin.file:
-        path: "/home/hama/.ssh"
+        path: "/home/{{user}}/.ssh"
         state: "directory"
         mode: "0700"
-        owner: hama
-        group: hama
+        owner: "{{user}}"
+        group: "{{user}}"
 
     - name: make authorized_keys file
       ansible.builtin.blockinfile:
-        path: "/home/hama/.ssh/authorized_keys"
+        path: "/home/{{user}}/.ssh/authorized_keys"
         block: |
          {{ auth_key }}
         create: yes
         mode: "0700"
-        owner: hama
-        group: hama
+        owner: "{{user}}"
+        group: "{{user}}"
