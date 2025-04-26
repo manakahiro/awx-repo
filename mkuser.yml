@@ -2,6 +2,10 @@
 - hosts: all
   gather_facts: true
   tasks:
+    - name: make group hama
+      ansible.builtin.group:
+        name: hama
+
     - name: make user hama
       ansible.builtin.user:
         name: hama
