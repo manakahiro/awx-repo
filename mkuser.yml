@@ -15,6 +15,7 @@
           - sudo
         shell: "/bin/bash"
         password: "{{ item.hash }}"
+        update_password: "always"
       with_items: "{{ users }}"
 
     - name: make .ssh/ folder 
@@ -26,23 +27,22 @@
         group: "{{ item.name }}"
       with_items: "{{ users }}"
 
-#    - name: make authorized_keys file
-#      ansible.builtin.blockinfile:
-#        path: "/home/{{item}}/.ssh/authorized_keys"
-#        block: |
-#          {% for key in auth_keys %}
-#          {{ key }}
-#          {% endfor %}
-#        create: yes
-#        mode: "0700"
-#        owner: "{{item}}"
-#        group: "{{item}}"
-#      loop: "{{users}}"
+    - name: make authorized_keys file
+      ansible.builtin.blockinfile:
+        path: "/home/{{ item.name }}/.ssh/authorized_keys"
+        block: |
+          {% for key in auth_keys %}
+          {{ key }}
+          {% endfor %}
+        create: yes
+        mode: "0700"
+        owner: "{{ item.name }}"
+        group: "{{ item.name }}"
+      with_items: "{{ users }}"
 #
 #    - name: echo debug for loop
 #      debug:
 #        msg: "{{ item }}"
 #      loop: "{{ name_list }}"
-
 
 
