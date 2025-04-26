@@ -3,7 +3,7 @@
   gather_facts: true
   tasks:
     - name: make user hama
-      ansible.buitin.user:
+      ansible.builtin.user:
         name: hama
         group: hama
         groups: 
