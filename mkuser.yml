@@ -5,7 +5,7 @@
     - name: make group
       ansible.builtin.group:
         name: "{{ item.name }}"
-      loop: "{{ users }}"
+      with_items: "{{ users }}"
 
     - name: make user 
       ansible.builtin.user:
@@ -15,7 +15,7 @@
           - sudo
         shell: "/bin/bash"
         password: "{{ item.hash }}"
-      loop: "{{ users }}"
+      with_items: "{{ users }}"
 
     - name: make .ssh/ folder 
       ansible.builtin.file:
@@ -24,7 +24,7 @@
         mode: "0700"
         owner: "{{ item.name }}"
         group: "{{ item.name }}"
-      loop: "{{ users }}"
+      with_items: "{{ users }}"
 
 #    - name: make authorized_keys file
 #      ansible.builtin.blockinfile:
