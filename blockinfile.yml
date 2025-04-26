@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: blockinfile 
+      ansible.builtin.blockinfile:
+        path: "{{ path }}"
+        block: |
+         {{ item  }}
+        create: yes
+        mode: "0644"
+	loop: "{{ name_list }}"
