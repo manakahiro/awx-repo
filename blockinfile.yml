@@ -6,9 +6,9 @@
       ansible.builtin.blockinfile:
         path: "{{ path }}"
         block: |
-          %{ for x in name_list %}
+          {% for x in name_list %}
             x
-          %{ endfor %}
+          {% endfor %}
         create: yes
         mode: "0644"
 
