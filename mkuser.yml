@@ -31,4 +31,4 @@
         group: hama
         block: |
          "{{ item }}"
-        with_items: "{{ auth_keys }}"
+        with_items: auth_keys
