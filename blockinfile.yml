@@ -2,15 +2,15 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - name: blockinfile 
-      ansible.builtin.blockinfile:
-        path: "{{ path }}"
-        block: |
-          %{ for i in name_list %}
-          "{{ i }}"
-          %{ endfor %}
-        create: yes
-        mode: "0644"
+#    - name: blockinfile 
+#      ansible.builtin.blockinfile:
+#        path: "{{ path }}"
+#        block: |
+#          %{ for i in name_list %}
+#          "{{ i }}"
+#          %{ endfor %}
+#        create: yes
+#        mode: "0644"
 
     - name: echo debug for loop
       debug:
