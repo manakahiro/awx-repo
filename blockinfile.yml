@@ -5,7 +5,17 @@
     - name: blockinfile 
       ansible.builtin.blockinfile:
         path: "{{ path }}"
-        block: "{{ item }}"
+        block: |
+          %{ for i in name_list %}
+          {{ i }}
+          %{ endfor %}
         create: yes
         mode: "0644"
-      with_items: "{{ name_list }}"
+
+    - name: echo debug for loop
+      debug:
+        msg: "{{ itmem }}"
+      loop: "{{ server_list }}"
+
+
+
