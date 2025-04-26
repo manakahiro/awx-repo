@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: make user hama
+      ansible.buitin.user:
+        name: hama
+        group: hama
+        groups: 
+          - sudo
+        authorization: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+WL+RsIONh/+TXlfxqTUVahfWWyFAABCTrftCDrhd0 hama@dv6"
+
