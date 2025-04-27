@@ -18,6 +18,22 @@
         update_password: "always"
       with_items: "{{ users }}"
 
+    - name: add groups 
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        groups: 
+          - sudo
+      with_items: "{{ users }}"
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: add groups 
+      ansible.builtin.user:
+        name: "{{ item.name }}"
+        groups: 
+          - wheel 
+      with_items: "{{ users }}"
+      when: ansible_facts['os_family'] == "Archlinux"
+
     - name: make .ssh/ folder 
       ansible.builtin.file:
         path: "/home/{{ item.name }}/.ssh"
@@ -39,10 +55,4 @@
         owner: "{{ item.name }}"
         group: "{{ item.name }}"
       with_items: "{{ users }}"
-#
-#    - name: echo debug for loop
-#      debug:
-#        msg: "{{ item }}"
-#      loop: "{{ name_list }}"
-
 
