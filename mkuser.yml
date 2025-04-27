@@ -2,17 +2,17 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - name: make group
-      ansible.builtin.group:
-        name: "{{ item.name }}"
-      with_items: "{{ users }}"
-
+#    - name: make group
+#      ansible.builtin.group:
+#        name: "{{ item.name }}"
+#      with_items: "{{ users }}"
+#
     - name: make user 
       ansible.builtin.user:
         name: "{{ item.name }}"
-        group: "{{ item.name }}"
-        groups: 
-          - sudo
+#        group: "{{ item.name }}"
+#        groups: 
+#          - sudo
         shell: "/bin/bash"
         password: "{{ item.hash }}"
         update_password: "always"
