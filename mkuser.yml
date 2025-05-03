@@ -56,3 +56,16 @@
         group: "{{ item.name }}"
       with_items: "{{ users }}"
 
+    - name: make screenrc file
+      ansible.builtin.blockinfile:
+        path: "/home/{{ item.name }}/.screenrc"
+        block: |
+          caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+          escape ^t^t
+          startup_message off
+        create: yes
+        mode: "0644"
+        owner: "{{ item.name }}"
+        group: "{{ item.name }}"
+      with_items: "{{ users }}"
+
