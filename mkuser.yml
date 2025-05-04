@@ -51,7 +51,7 @@
           {{ key }}
           {% endfor %}
         create: yes
-        mode: "0700"
+        mode: "0600"
         owner: "{{ item.name }}"
         group: "{{ item.name }}"
       with_items: "{{ users }}"
