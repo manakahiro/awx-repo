@@ -1,0 +1,6 @@
+#
+*.txt
+*.ini
+test/*
+log/*
+#
