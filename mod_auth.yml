@@ -1,6 +1,8 @@
 ---
 - hosts: all
   gather_facts: true
+  vars:
+    - xmode : "{{ check_mode | d("yes") }}"
   tasks:
     - name: make authorized_keys file change 
       ansible.builtin.lineinfile:
@@ -8,5 +10,5 @@
         regex: "{{ item.regex }}"
         state: absent
       with_items: "{{ users }}"
-      check_mode: yes
+      check_mode: "{{ xmode }}" 
 
