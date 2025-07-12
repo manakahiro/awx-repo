@@ -9,6 +9,4 @@
         state: absent
       with_items: "{{ users }}"
       check_mode: yes
-      diff_mode: yes
-
 
