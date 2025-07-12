@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: make authorized_keys file change 
+      ansible.builtin.lineinfile:
+        path: "/home/{{ item.name }}/.ssh/authorized_keys"
+        regex: "{{ item.regex }}"
+        check_mode: yes
+        diff_mode: yes
+        status: absent
+      with_items: "{{ users }}"
+
+
