@@ -7,7 +7,7 @@
         path: "/home/{{ item.name }}/.ssh/authorized_keys"
         regex: "{{ item.regex }}"
         state: absent
-	attribute: "check_mode"
+        attribute: "check_mode"
       with_items: "{{ users }}"
 
 
