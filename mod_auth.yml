@@ -6,9 +6,8 @@
       ansible.builtin.lineinfile:
         path: "/home/{{ item.name }}/.ssh/authorized_keys"
         regex: "{{ item.regex }}"
-        check_mode: yes
-        diff_mode: yes
-        status: absent
+        state: absent
+	attribute: "check_mode"
       with_items: "{{ users }}"
 
 
