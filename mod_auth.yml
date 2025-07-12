@@ -11,4 +11,5 @@
         state: absent
       with_items: "{{ users }}"
       check_mode: "{{ xmode }}" 
+      diff_mode: yes
 
